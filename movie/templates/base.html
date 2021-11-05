@@ -32,8 +32,21 @@
           <a class="nav-link" href="{% url 'news' %}">News</a>
         </li>
       </ul>
-      <a href="#" class="btn btn-outline-primary">Login</a>
-      <a href="#" class="btn btn-outline-secondary">Sign Up</a>
+      {% if user.is_authenticated %} Welcome, {{ user.username }}
+      <a href="{% url 'logoutaccount' %}" class="btn btn-outline-secondary">
+        Log out
+      </a>
+
+      {% else %}
+      <a href="{% url 'loginaccount' %}" class="btn btn-outline-primary">
+        Login
+      </a>
+
+      <a href="{% url 'signupaccount' %}" class="btn btn-outline-secondary">
+        Sign Up
+      </a>
+
+      {% endif %}
     </div>
   </nav>
 </header>
